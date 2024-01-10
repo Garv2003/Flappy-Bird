@@ -97,10 +97,17 @@ function play() {
   function apply_gravity() {
     if (game_state != "Play") return;
     bird_dy = bird_dy + grativy;
+
+    document.removeEventListener("touchstart", (e) => {
+      img.src = "images/Bird-2.png";
+      bird_dy = -7.6;
+    });
+
     document.addEventListener("touchstart", (e) => {
       img.src = "images/Bird-2.png";
       bird_dy = -7.6;
     });
+
     document.addEventListener("keydown", (e) => {
       if (e.key == "ArrowUp" || e.key == " ") {
         img.src = "images/Bird-2.png";
@@ -108,10 +115,14 @@ function play() {
       }
     });
 
+    document.removeEventListener("touchend", (e) => {
+      img.src = "images/Bird.png";
+    });
+
     document.addEventListener("touchend", (e) => {
       img.src = "images/Bird.png";
     });
-    
+
     document.addEventListener("keyup", (e) => {
       if (e.key == "ArrowUp" || e.key == " ") {
         img.src = "images/Bird.png";
