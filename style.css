@@ -81,3 +81,45 @@
     width: 14vw;
   }
 }
+
+@media screen and (max-width: 600px) {
+  .message {
+    font-size: 30px;
+    top: 50%;
+    white-space: nowrap;
+  }
+  .score {
+    font-size: 8vh;
+  }
+  .bird {
+    width: 50px;
+    height: 30px;
+  }
+  .pipe_sprite {
+    width: 14vw;
+  }
+  .pipe_sprite {
+    height: 65vh;
+  }
+}
+
+@media screen and (max-width: 400px) {
+  .message {
+    font-size: 20px;
+    top: 50%;
+    white-space: nowrap;
+  }
+  .score {
+    font-size: 8vh;
+  }
+  .bird {
+    width: 50px;
+    height: 30px;
+  }
+  .pipe_sprite {
+    width: 14vw;
+  }
+  .pipe_sprite {
+    height: 65vh;
+  }
+}
