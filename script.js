@@ -19,37 +19,49 @@ let game_state = "Start";
 img.style.display = "none";
 message.classList.add("messageStyle");
 
-document.addEventListener("touchstart", (e) => {
-  if (game_state != "Play") {
-    document.querySelectorAll(".pipe_sprite").forEach((e) => {
-      e.remove();
-    });
-    img.style.display = "block";
-    bird.style.top = "40vh";
-    game_state = "Play";
-    message.innerHTML = "";
-    score_title.innerHTML = "Score : ";
-    score_val.innerHTML = "0";
-    message.classList.remove("messageStyle");
-    play();
+document.addEventListener(
+  "touchstart",
+  (e) => {
+    if (game_state != "Play") {
+      document.querySelectorAll(".pipe_sprite").forEach((e) => {
+        e.remove();
+      });
+      img.style.display = "block";
+      bird.style.top = "40vh";
+      game_state = "Play";
+      message.innerHTML = "";
+      score_title.innerHTML = "Score : ";
+      score_val.innerHTML = "0";
+      message.classList.remove("messageStyle");
+      play();
+    }
+  },
+  {
+    once: true,
   }
-});
+);
 
-document.addEventListener("keydown", (e) => {
-  if (e.key == "ArrowUp" && game_state != "Play") {
-    document.querySelectorAll(".pipe_sprite").forEach((e) => {
-      e.remove();
-    });
-    img.style.display = "block";
-    bird.style.top = "40vh";
-    game_state = "Play";
-    message.innerHTML = "";
-    score_title.innerHTML = "Score : ";
-    score_val.innerHTML = "0";
-    message.classList.remove("messageStyle");
-    play();
+document.addEventListener(
+  "keydown",
+  (e) => {
+    if (e.key == "ArrowUp" && game_state != "Play") {
+      document.querySelectorAll(".pipe_sprite").forEach((e) => {
+        e.remove();
+      });
+      img.style.display = "block";
+      bird.style.top = "40vh";
+      game_state = "Play";
+      message.innerHTML = "";
+      score_title.innerHTML = "Score : ";
+      score_val.innerHTML = "0";
+      message.classList.remove("messageStyle");
+      play();
+    }
+  },
+  {
+    once: true,
   }
-});
+);
 
 function play() {
   function move() {
@@ -98,16 +110,6 @@ function play() {
     if (game_state != "Play") return;
     bird_dy = bird_dy + grativy;
 
-    document.removeEventListener("touchstart", (e) => {
-      img.src = "images/Bird-2.png";
-      bird_dy = -7.6;
-    });
-
-    document.addEventListener("touchstart", (e) => {
-      img.src = "images/Bird-2.png";
-      bird_dy = -7.6;
-    });
-
     document.addEventListener("keydown", (e) => {
       if (e.key == "ArrowUp" || e.key == " ") {
         img.src = "images/Bird-2.png";
@@ -115,18 +117,27 @@ function play() {
       }
     });
 
-    document.removeEventListener("touchend", (e) => {
-      img.src = "images/Bird.png";
+    document.addEventListener("keyup", (e) => {
+      if (e.key == "ArrowUp" || e.key == " ") {
+        img.src = "images/Bird.png";
+      }
+    });
+    document.addEventListener("touchstart", (e) => {
+      img.src = "images/Bird-2.png";
+      bird_dy = -7.6;
     });
 
     document.addEventListener("touchend", (e) => {
       img.src = "images/Bird.png";
     });
 
-    document.addEventListener("keyup", (e) => {
-      if (e.key == "ArrowUp" || e.key == " ") {
-        img.src = "images/Bird.png";
-      }
+    document.removeEventListener("touchstart", (e) => {
+      img.src = "images/Bird-2.png";
+      bird_dy = -7.6;
+    });
+
+    document.removeEventListener("touchend", (e) => {
+      img.src = "images/Bird.png";
     });
 
     if (bird_props.top <= 0 || bird_props.bottom >= background.bottom) {
